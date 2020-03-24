@@ -158,8 +158,8 @@ for handling WGSL, including parsing, validation, and compilation.
 
 At this time, we expect at least three essentially independent
 implementations of WGSL ingestion as part of browser support for WebGPU.
-Independent implementation serves as an important check on the quality
-of the WGSL and WebGPU specifications.
+Independent implementation ensures that multiple people have looked at the spec very closely.
+Doing so shines a light on lurking ambiguity or gaps in the spec.
 
 
 ## What about my existing shaders, compilers, and other tooling?
@@ -167,19 +167,18 @@ of the WGSL and WebGPU specifications.
 This is also expressed as "the last thing I need is another shader language".
 (See https://xkcd.com/927/)
 
+The WebGPU Community Group itself is not working on any compilers or other
+tooling which produce WGSL. However, WGSL is designed to be a faithful
+compilation target for all popular shading languages which use WebGPU's feature
+set.
+
 For developers invested in the SPIR-V ecosystem for Vulkan and OpenGL,
-the key will be convertibility between WGSL and SPIR-V.
-For shaders that only use WebGPU features, WebGPU Community Group
-members expect to develop tooling to faithfully convert between WGSL
-and "Shader" SPIR-V.
-By "faithful", we mean that all salient properties of a shader should
-be preserved by a round trip conversion between the two ways of writing
-the shader: e.g. it should retain its semantics and its performance
-characteristics.
-Furthermore, those WebGPU Community Group members plan to add an option
+certain WebGPU Community Group members plan to add an option
 to existing mainstream SPIR-V compilers to emit WGSL directly.
-We expect other SPIR-V tooling (e.g. fuzzers, optimizers) can be reused,
-via the addition of a conversion step between WGSL and SPIR-V at their
-I/O boundaries.
 
+For developers invested in HLSL for DirectX or Metal Shading Language for Metal,
+the WebGPU Community Group welcomes the community to create new compilers
+or extend existing tools to produce WGSL.
 
+WGSL is a new language. We expect WGSL's ecosystem will grow as the language
+becomes more mature.
